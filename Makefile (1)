@@ -1,0 +1,16 @@
+CFLAGS = -Wall -std=c2x
+LDFLAGS = birchutils.o
+
+all: clean nm-naive
+
+nm-naive: nm-naive.o birchutils.o
+	cc $(CFLAGS) nm-naive.o birchutils.o -o nm-naive
+
+nm-naive.o: nm-naive.c
+	cc $(CFLAGS) -c nm-naive.c
+
+birchutils.o: birchutils.c birchutils.h
+	cc $(CFLAGS) -c birchutils.c
+
+clean:
+	rm -f *.o nm-naive
